@@ -110,6 +110,6 @@ new p5((p) => {
       
     }
 
-    noLoop();
+    p.noLoop();
   };
 }, "pinna-messed-up")
