@@ -2,14 +2,16 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Rasterization #      ">
+<meta name=description content="Antialiasing #  Definición #  El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica.
+Descripción #  Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing).">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Rasterization #      ">
+<meta property="og:description" content="Antialiasing #  Definición #  El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica.
+Descripción #  Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing).">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/rendering/Rasterization/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-08T00:55:54-05:00">
-<title>Rasterization | Visual Computing</title>
+<meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/rendering/Antialiasing/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-12-10T23:34:54-05:00">
+<title>Antialiasing | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
@@ -103,10 +105,10 @@
 </ul>
 </li>
 <li>
-<a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Antialiasing/>Antialiasing</a>
+<a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Antialiasing/ class=active>Antialiasing</a>
 </li>
 <li>
-<a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Rasterization/ class=active>Rasterization</a>
+<a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Rasterization/>Rasterization</a>
 </li>
 </ul>
 </li>
@@ -128,7 +130,7 @@ Blog
 <label for=menu-control>
 <img src=/vc/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Rasterization</strong>
+<strong>Antialiasing</strong>
 <label for=toc-control>
 <img src=/vc/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
@@ -136,25 +138,57 @@ Blog
 <aside class="hidden clearfix">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#rasterization>Rasterization</a></li>
+<li><a href=#antialiasing>Antialiasing</a>
+<ul>
+<li><a href=#definición>Definición</a></li>
+<li><a href=#descripción>Descripción</a></li>
+<li><a href=#aplicaciones>Aplicaciones</a></li>
+<li><a href=#referencias>Referencias</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </aside>
 </header>
-<article class=markdown><h1 id=rasterization>
-Rasterization
-<a class=anchor href=#rasterization>#</a>
+<article class=markdown><h1 id=antialiasing>
+Antialiasing
+<a class=anchor href=#antialiasing>#</a>
 </h1>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
-<script src=/vc/sketches/triangle-rasterization.js></script>
-<div id=triangle-rasterization></div>
+<h2 id=definición>
+Definición
+<a class=anchor href=#definici%c3%b3n>#</a>
+</h2>
+<p>El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica.</p>
+<h2 id=descripción>
+Descripción
+<a class=anchor href=#descripci%c3%b3n>#</a>
+</h2>
+<p>Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing). Cuando se realiza esto, existe una pérdida de información al fusionar varios píxeles de la imagen, lo que puede producir una deformación de la misma. De ahí a que se use para suavizar esa tranformación y eliminar los efectos secundarios que puedan surgir dela tranformación, ya sea por el tamaño de la imagen, por la perspectiva o por cuakquier otra adaptación. El antialiasing se puede implementar de distintas maneras:</p>
+<ul>
+<li>Sobremuestreo o posfiltración: Se muestrean los objetos en una resolución más alta y luego se despliegan a una resolución menor para que no aparezcan tan pixelados.</li>
+<li>Máscaras de peso de píxeles: Se les asigna un peso a los subpíxeles cercanos al centro del área de un píxel.</li>
+<li>Muestreo de área o prefiltración: Se determina la intensidad de cada píxel al calcular el translape en cada uno de los píxeles que componen un objeto gráfico.</li>
+<li>Fases del píxel: mediante microcolocación se cambia la posición en la que se despliegan los píxeles.</li>
+</ul>
+<h2 id=aplicaciones>
+Aplicaciones
+<a class=anchor href=#aplicaciones>#</a>
+</h2>
+<p>Este método está implementado en todos los GPU&rsquo;s y los motores gráficos modernos, existen varios tipos de antialiasing en donde se combinan diferentes métodos de implementación de este fenómeno. En la mayoría de los casos, este método se refleja en el mundo de los videojuegos para poder adaptarlos a la pantalla y resolución de los usuarios.</p>
+<h2 id=referencias>
+Referencias
+<a class=anchor href=#referencias>#</a>
+</h2>
+<ol>
+<li><a href=https://www.geeknetic.es/Antialiasing/que-es-y-para-que-sirve>https://www.geeknetic.es/Antialiasing/que-es-y-para-que-sirve</a>.</li>
+<li><a href=https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/>https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/</a>.</li>
+</ol>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/b4da4a44e82c68981a021cac9a7e47e990c5f6cb title="Last modified by saparici0 | December 8, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/ea199ad18d7319a86329bc449df43443d006dff3 title="Last modified by Juan Camilo Acosta | December 11, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
-<span>December 8, 2021</span>
+<span>December 11, 2021</span>
 </a>
 </div>
 </div>
@@ -168,7 +202,14 @@ Rasterization
 <div class=book-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#rasterization>Rasterization</a></li>
+<li><a href=#antialiasing>Antialiasing</a>
+<ul>
+<li><a href=#definición>Definición</a></li>
+<li><a href=#descripción>Descripción</a></li>
+<li><a href=#aplicaciones>Aplicaciones</a></li>
+<li><a href=#referencias>Referencias</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
