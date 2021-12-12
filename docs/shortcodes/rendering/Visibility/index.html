@@ -2,19 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content>
+<meta name=description content="Visibility Alghoritms #  Ray tracing #  The videogames world has undergone a huge evolution in the last years. It has been posible by the GPU, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="golang">
-<meta property="og:description" content>
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://vc-project.github.io/vc/categories/golang/">
-<title>golang | Visual Computing</title>
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Visibility Alghoritms #  Ray tracing #  The videogames world has undergone a huge evolution in the last years. It has been posible by the GPU, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/rendering/Visibility/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-12-12T08:13:23-05:00">
+<title>Visibility | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
 <script defer src=/vc/en.search.min.1801e34c1102f83a735e4f79aaf1e9d623b46f945f900dfdbb056c13d0d0f080.js integrity="sha256-GAHjTBEC+DpzXk95qvHp1iO0b5RfkA39uwVsE9DQ8IA=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://vc-project.github.io/vc/categories/golang/index.xml title="Visual Computing">
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -106,7 +106,7 @@
 <a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Rasterization/>Rasterization</a>
 </li>
 <li>
-<a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Visibility/>Visibility</a>
+<a href=https://vc-project.github.io/vc/docs/shortcodes/rendering/Visibility/ class=active>Visibility</a>
 </li>
 </ul>
 </li>
@@ -128,53 +128,22 @@ Blog
 <label for=menu-control>
 <img src=/vc/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>golang</strong>
+<strong>Visibility</strong>
 <label for=toc-control>
 <img src=/vc/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div>
 <aside class="hidden clearfix">
-<nav>
+<nav id=TableOfContents>
 <ul>
-<li class=book-section-flat>
-<strong>Categories</strong>
+<li><a href=#visibility-alghoritms>Visibility Alghoritms</a>
 <ul>
-<li class="flex justify-between">
-<a href=/vc/categories/Development/>Development</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/categories/golang/>golang</a>
-<span>2</span>
-</li>
+<li><a href=#ray-tracing>Ray tracing</a>
+<ul>
+<li><a href=#definition>Definition</a></li>
+<li><a href=#why-ray-tracing>Why Ray tracing?</a></li>
+<li><a href=#references>References</a></li>
 </ul>
-</li>
-<li class=book-section-flat>
-<strong>Tags</strong>
-<ul>
-<li class="flex justify-between">
-<a href=/vc/tags/development/>development</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/go/>go</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/golang/>golang</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/hugo/>hugo</a>
-<span>1</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/templates/>templates</a>
-<span>1</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/themes/>themes</a>
-<span>1</span>
 </li>
 </ul>
 </li>
@@ -182,100 +151,64 @@ Blog
 </nav>
 </aside>
 </header>
-<article class="markdown book-post">
-<h2>
-<a href=/vc/posts/goisforlovers/>(Hu)go Template Primer</a>
+<article class=markdown><h1 id=visibility-alghoritms>
+Visibility Alghoritms
+<a class=anchor href=#visibility-alghoritms>#</a>
+</h1>
+<h2 id=ray-tracing>
+Ray tracing
+<a class=anchor href=#ray-tracing>#</a>
 </h2>
-<h5>April 2, 2014</h5>
-<div>
-<a href=/vc/categories/Development/>Development</a>,
-<a href=/vc/categories/golang/>golang</a>
-</div>
-<div>
-<a href=/vc/tags/go/>go</a>,
-<a href=/vc/tags/golang/>golang</a>,
-<a href=/vc/tags/templates/>templates</a>,
-<a href=/vc/tags/themes/>themes</a>,
-<a href=/vc/tags/development/>development</a>
-</div>
-<p>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.
-<a href=/vc/posts/goisforlovers/>...</a>
-</p>
-</article>
-<article class="markdown book-post">
-<h2>
-<a href=/vc/posts/hugoisforlovers/>Getting Started with Hugo</a>
-</h2>
-<h5>April 2, 2014</h5>
-<div>
-<a href=/vc/categories/Development/>Development</a>,
-<a href=/vc/categories/golang/>golang</a>
-</div>
-<div>
-<a href=/vc/tags/go/>go</a>,
-<a href=/vc/tags/golang/>golang</a>,
-<a href=/vc/tags/hugo/>hugo</a>,
-<a href=/vc/tags/development/>development</a>
-</div>
-<p>Step 1. Install Hugo # Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs # Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
-<a href=/vc/posts/hugoisforlovers/>...</a>
-</p>
+<p>The videogames world has undergone a huge evolution in the last years. It has been posible
+by the GPU, the central component on which have been built.
+In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.</p>
+<h3 id=definition>
+Definition
+<a class=anchor href=#definition>#</a>
+</h3>
+<p>Ray tracing is a rendering method that allows create, with real form, the ligth behavior in the object interaction.
+In this method, rays of light are projected, calculating the properties of the reflected and refracted light. In real world, every light source like the sun or a lightbulb, emits photons in all directions, the vast majority can see our eyes. Ray tracing runs the other way, emits ray from the camera. Every ray travel any distance before reflect many times for recalculate the pixel value.</p>
+<h3 id=why-ray-tracing>
+Why Ray tracing?
+<a class=anchor href=#why-ray-tracing>#</a>
+</h3>
+<p>The standar rendering method uses light maps precalculated and the light of all scene. ANy games use the volumetric lighting for adding light sources in movement and allow dynamic shades. But, this moderation method requires intensive use of GPU.
+Ray tracing allows reflects and shades projecting with accuracy in th erendering procces. In the traditional rendering methods, both effects are optional and can cause meaningfulimpacts in performance.</p>
+<h3 id=references>
+References
+<a class=anchor href=#references>#</a>
+</h3>
+<ol>
+<li><a href=https://www.muycomputer.com/2021/02/02/ray-tracing-trazado-de-rayos-claves/>https://www.muycomputer.com/2021/02/02/ray-tracing-trazado-de-rayos-claves/</a>.</li>
+<li><a href=https://cedominombre.com/que-es-el-trazado-de-rayos/>https://cedominombre.com/que-es-el-trazado-de-rayos/</a>.</li>
+</ol>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/a5386e9959fe6195655bbeae66daedb93d76e897 title="Last modified by Juan Camilo Acosta | December 12, 2021" target=_blank rel=noopener>
+<img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
+<span>December 12, 2021</span>
+</a>
+</div>
 </div>
 <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
 </footer>
+<div class=book-comments>
+</div>
 <label for=menu-control class="hidden book-menu-overlay"></label>
 </div>
 <aside class=book-toc>
 <div class=book-toc-content>
-<nav>
+<nav id=TableOfContents>
 <ul>
-<li class=book-section-flat>
-<strong>Categories</strong>
+<li><a href=#visibility-alghoritms>Visibility Alghoritms</a>
 <ul>
-<li class="flex justify-between">
-<a href=/vc/categories/Development/>Development</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/categories/golang/>golang</a>
-<span>2</span>
-</li>
+<li><a href=#ray-tracing>Ray tracing</a>
+<ul>
+<li><a href=#definition>Definition</a></li>
+<li><a href=#why-ray-tracing>Why Ray tracing?</a></li>
+<li><a href=#references>References</a></li>
 </ul>
-</li>
-<li class=book-section-flat>
-<strong>Tags</strong>
-<ul>
-<li class="flex justify-between">
-<a href=/vc/tags/development/>development</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/go/>go</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/golang/>golang</a>
-<span>2</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/hugo/>hugo</a>
-<span>1</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/templates/>templates</a>
-<span>1</span>
-</li>
-<li class="flex justify-between">
-<a href=/vc/tags/themes/>themes</a>
-<span>1</span>
 </li>
 </ul>
 </li>
