@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Rasterization #      Antialiasing #  Definition #  El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica.
-Descripción #  Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing).">
+<meta name=description content="Rasterization #      Antialiasing #  Definition #  Antialiasing is a technique whose objective is to reduce the distortions and graphical defects that appear in high-resolution images when these are presented at lower resolutions and vice versa. This helps getting and adequate display resolution of textures and the improved resolution of the different specific scenes.
+Description #  This method is used to address the effect of aliasing, a frequent problem obtained when an image is presented in a different resolution from its original size.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Rasterization #      Antialiasing #  Definition #  El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica.
-Descripción #  Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing).">
+<meta property="og:description" content="Rasterization #      Antialiasing #  Definition #  Antialiasing is a technique whose objective is to reduce the distortions and graphical defects that appear in high-resolution images when these are presented at lower resolutions and vice versa. This helps getting and adequate display resolution of textures and the improved resolution of the different specific scenes.
+Description #  This method is used to address the effect of aliasing, a frequent problem obtained when an image is presented in a different resolution from its original size.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/rendering/Rasterization/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-12T08:13:23-05:00">
+<meta property="article:modified_time" content="2021-12-12T16:39:10-05:00">
 <title>Rasterization | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.1801e34c1102f83a735e4f79aaf1e9d623b46f945f900dfdbb056c13d0d0f080.js integrity="sha256-GAHjTBEC+DpzXk95qvHp1iO0b5RfkA39uwVsE9DQ8IA=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.1a9da0904eeb9db89438ba7636b51fef206447012cd0ccd8fdbcf46e3c4e5e76.js integrity="sha256-Gp2gkE7rnbiUOLp2NrUf7yBkRwEs0MzY/bz0bjxOXnY=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -143,7 +143,7 @@ Blog
 <li><a href=#antialiasing>Antialiasing</a>
 <ul>
 <li><a href=#definition>Definition</a></li>
-<li><a href=#descripción>Descripción</a></li>
+<li><a href=#description>Description</a></li>
 <li><a href=#aplicaciones>Aplicaciones</a></li>
 <li><a href=#referencias>Referencias</a></li>
 </ul>
@@ -170,23 +170,32 @@ Antialiasing
 Definition
 <a class=anchor href=#definition>#</a>
 </h3>
-<p>El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica.</p>
-<h3 id=descripción>
-Descripción
-<a class=anchor href=#descripci%c3%b3n>#</a>
+<p>Antialiasing is a technique whose objective is to reduce the distortions and graphical defects that appear in high-resolution images when these are presented at lower resolutions and vice versa. This helps getting and adequate display resolution of textures and the improved resolution of the different specific scenes.</p>
+<h3 id=description>
+Description
+<a class=anchor href=#description>#</a>
 </h3>
-<p>Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing). Cuando se realiza esto, existe una pérdida de información al fusionar varios píxeles de la imagen, lo que puede producir una deformación de la misma. De ahí a que se use para suavizar esa tranformación y eliminar los efectos secundarios que puedan surgir dela tranformación, ya sea por el tamaño de la imagen, por la perspectiva o por cuakquier otra adaptación. El antialiasing se puede implementar de distintas maneras:</p>
+<p>This method is used to address the effect of aliasing, a frequent problem obtained when an image is presented in a different resolution from its original size. The effect consists of the appearance of jagged edges in a rasterized image (an image composed by a set of pixels intended for digital displaying). The effect causes a processed image to become an alias (a false version) of the original sample and hence the name aliasing.</p>
+<p>When an image is downscaled there is a loss of information due to the merging of several pixels of the image, which can cause deformations. The information loss has a clear origin: The undersampling. This happens because smooth objects are difficult to show as a set of matrix organized pixels and if our processed image sample does not comprises a correct sample frequency some important details will be lost. Anti-aliasing is used to smooth the transformation and eliminate the side effects that may arise from these transformations, either by image size, perspective or any other adaptation. Antialiasing can be implemented in different ways:</p>
 <ul>
-<li>Sobremuestreo o posfiltración: Se muestrean los objetos en una resolución más alta y luego se despliegan a una resolución menor para que no aparezcan tan pixelados.</li>
-<li>Máscaras de peso de píxeles: Se les asigna un peso a los subpíxeles cercanos al centro del área de un píxel.</li>
-<li>Muestreo de área o prefiltración: Se determina la intensidad de cada píxel al calcular el translape en cada uno de los píxeles que componen un objeto gráfico.</li>
-<li>Fases del píxel: mediante microcolocación se cambia la posición en la que se despliegan los píxeles.</li>
+<li>
+<p>Oversampling or post-filtering: Objects are sampled at a higher resolution and then they are displayed at a lower resolution so that they do not appear pixelated. To obtain the final image we must therefore rasterize the original source using a very precise matrix or grid and then create subpixels which display the average intensity of the smaller oversampled pixels.</p>
+</li>
+<li>
+<p>Pixel weight masks: Subpixels near the center of a pixel area are assigned weights. The mask oriented algorithms can be used to identify which objects, edges or curves are being represented by specific pixels and use the hardware display capacity in a context decision global approach.</p>
+</li>
+<li>
+<p>Area sampling or prefiltering: The intensity of each pixel is determined by calculating the overlap in each of the pixels that make up a graphic object. This computation is done prior to the rasterization and we condider objects not finer pixels to calculate the final image pixel by pixel.</p>
+</li>
+<li>
+<p>Pixel phasing: It works by micro-placement. The position at which pixels are displayed is changed. The idea is to follow the geometry of the objects and display an image doing the necessary fixes to achieve the correct representation of this feature.</p>
+</li>
 </ul>
 <h3 id=aplicaciones>
 Aplicaciones
 <a class=anchor href=#aplicaciones>#</a>
 </h3>
-<p>Este método está implementado en todos los GPU&rsquo;s y los motores gráficos modernos, existen varios tipos de antialiasing en donde se combinan diferentes métodos de implementación de este fenómeno. En la mayoría de los casos, este método se refleja en el mundo de los videojuegos para poder adaptarlos a la pantalla y resolución de los usuarios.</p>
+<p>This method is implemented in all modern GPU&rsquo;s and graphics engines, there are several types of antialiasing and the different methods of implementation of this phenomenon can be combined. In most cases of GPU usage, this method is reflected in the world of video games in order to adapt them to the user&rsquo;s screen and resolution.</p>
 <h3 id=referencias>
 Referencias
 <a class=anchor href=#referencias>#</a>
@@ -194,11 +203,12 @@ Referencias
 <ol>
 <li><a href=https://www.geeknetic.es/Antialiasing/que-es-y-para-que-sirve>https://www.geeknetic.es/Antialiasing/que-es-y-para-que-sirve</a>.</li>
 <li><a href=https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/>https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/</a>.</li>
+<li><a href=https://www.geeksforgeeks.org/computer-graphics-antialiasing/>https://www.geeksforgeeks.org/computer-graphics-antialiasing/</a></li>
 </ol>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/a5386e9959fe6195655bbeae66daedb93d76e897 title="Last modified by Juan Camilo Acosta | December 12, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/fc1216ca1edcdec91abf1e8f49c2df0a4e5be014 title="Last modified by jortizsi | December 12, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
 <span>December 12, 2021</span>
 </a>
@@ -219,7 +229,7 @@ Referencias
 <li><a href=#antialiasing>Antialiasing</a>
 <ul>
 <li><a href=#definition>Definition</a></li>
-<li><a href=#descripción>Descripción</a></li>
+<li><a href=#description>Description</a></li>
 <li><a href=#aplicaciones>Aplicaciones</a></li>
 <li><a href=#referencias>Referencias</a></li>
 </ul>
