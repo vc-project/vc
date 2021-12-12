@@ -5,20 +5,26 @@
 ## Antialiasing
 
 ### Definition
-El antialiasing es una técnica que tiene como objetivo reducir las distorsiones y artefactos gráficos que aparecen en una imagn de alta resolución cuando esta se presenta en una menor resolución y viceversa. Esto ayuda a la resolución de texturas y la resolución de una escena específica. 
+Antialiasing is a technique whose objective is to reduce the distortions and graphical defects that appear in high-resolution images when these are presented at lower resolutions and vice versa. This helps getting and adequate display resolution of textures and the improved resolution of the different specific scenes.
 
-### Descripción
-Este método funciona para combatir el efecto del aliasing, cuando se presenta una imagen en una resolución diferente, causando distrosión en la imagen (de ahí el nombre de aliasing). Cuando se realiza esto, existe una pérdida de información al fusionar varios píxeles de la imagen, lo que puede producir una deformación de la misma. De ahí a que se use para suavizar esa tranformación y eliminar los efectos secundarios que puedan surgir dela tranformación, ya sea por el tamaño de la imagen, por la perspectiva o por cuakquier otra adaptación. El antialiasing se puede implementar de distintas maneras:
+### Description
+This method is used to address the effect of aliasing, a frequent problem obtained when an image is presented in a different resolution from its original size. The effect consists of the appearance of jagged edges in a rasterized image (an image composed by a set of pixels intended for digital displaying).  The effect causes a processed image to become an alias (a false version) of the original sample and hence the name aliasing.  
 
-* Sobremuestreo o posfiltración: Se muestrean los objetos en una resolución más alta y luego se despliegan a una resolución menor para que no aparezcan tan pixelados.
-* Máscaras de peso de píxeles: Se les asigna un peso a los subpíxeles cercanos al centro del área de un píxel.
-* Muestreo de área o prefiltración: Se determina la intensidad de cada píxel al calcular el translape en cada uno de los píxeles que componen un objeto gráfico.
-* Fases del píxel: mediante microcolocación se cambia la posición en la que se despliegan los píxeles.
+When an image is downscaled  there is a loss of information due to the merging of several pixels of the image, which can cause deformations. The information loss has a clear origin: The undersampling. This happens because smooth objects are difficult to show as a set of matrix organized pixels and if our processed image sample does not comprises a correct sample frequency some important details will be lost. Anti-aliasing is used to smooth the transformation and eliminate the side effects that may arise from these transformations, either by image size, perspective or any other adaptation. Antialiasing can be implemented in different ways:
+
+* Oversampling or post-filtering: Objects are sampled at a higher resolution and then they are displayed at a lower resolution so that they do not appear pixelated. To obtain the final image we must therefore rasterize the original source using a very precise matrix or grid and then create subpixels which display the average intensity of the smaller oversampled pixels.
+
+* Pixel weight masks: Subpixels near the center of a pixel area are assigned weights. The mask oriented algorithms can be used to identify which objects, edges or curves are being represented by specific pixels and use the hardware display capacity in a context decision global approach.
+
+* Area sampling or prefiltering: The intensity of each pixel is determined by calculating the overlap in each of the pixels that make up a graphic object. This computation is done prior to the rasterization and we condider objects not finer pixels to calculate the final image pixel by pixel.
+
+* Pixel phasing: It works by micro-placement. The position at which pixels are displayed is changed. The idea is to follow the geometry of the objects and display an image doing the necessary fixes to achieve the correct representation of this feature.
 
 ### Aplicaciones
-Este método está implementado en todos los GPU's y los motores gráficos modernos, existen varios tipos de antialiasing en donde se combinan diferentes métodos de implementación de este fenómeno. En la mayoría de los casos, este método se refleja en el mundo de los videojuegos para poder adaptarlos a la pantalla y resolución de los usuarios.
+This method is implemented in all modern GPU's and graphics engines, there are several types of antialiasing and the different methods of implementation of this phenomenon can be combined. In most cases of GPU usage, this method is reflected in the world of video games in order to adapt them to the user's screen and resolution.
 
 
 ### Referencias
 1. https://www.geeknetic.es/Antialiasing/que-es-y-para-que-sirve.
 2. https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/.
+3. https://www.geeksforgeeks.org/computer-graphics-antialiasing/
