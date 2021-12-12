@@ -30,4 +30,4 @@ This method is implemented in all modern GPU's and graphics engines, there are s
 2. https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/.
 3. https://www.geeksforgeeks.org/computer-graphics-antialiasing/
 4. https://blogs.nvidia.com/blog/2018/03/19/whats-difference-between-ray-tracing-rasterization/
-5. 
+5. https://www.geeksforgeeks.org/vector-vs-raster-graphics/
