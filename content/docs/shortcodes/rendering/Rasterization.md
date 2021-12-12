@@ -1,4 +1,5 @@
 # Rasterization
+It is a process to make a correct vector to raster conversion in an image form sense. Vectorial images consist of several lines, paths and shapes in a 2D or 3D environment that are defined mathematically to describe objects and scenes. A raster image uses a bitmap or set of pixels in the form of a grid or matrix to represent an image. Rasterization is important because pixel format is the format used in digital output image devices.
 
 {{< p5-div sketch="/vc/sketches/triangle-rasterization.js" >}}
 
@@ -20,7 +21,7 @@ When an image is downscaled  there is a loss of information due to the merging o
 
 * Pixel phasing: It works by micro-placement. The position at which pixels are displayed is changed. The idea is to follow the geometry of the objects and display an image doing the necessary fixes to achieve the correct representation of this feature.
 
-### Aplicaciones
+### Applications
 This method is implemented in all modern GPU's and graphics engines, there are several types of antialiasing and the different methods of implementation of this phenomenon can be combined. In most cases of GPU usage, this method is reflected in the world of video games in order to adapt them to the user's screen and resolution.
 
 
@@ -28,3 +29,5 @@ This method is implemented in all modern GPU's and graphics engines, there are s
 1. https://www.geeknetic.es/Antialiasing/que-es-y-para-que-sirve.
 2. https://www.guiahardware.es/que-es-anti-aliasing-todo-necesitas-saber/.
 3. https://www.geeksforgeeks.org/computer-graphics-antialiasing/
+4. https://blogs.nvidia.com/blog/2018/03/19/whats-difference-between-ray-tracing-rasterization/
+5. 
