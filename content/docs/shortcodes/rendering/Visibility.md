@@ -3,7 +3,7 @@
 ## Ray tracing
 
 ## Introduction
-The videogames world has undergone a huge evolution in the last years. It has been posibleby the GPUs, the central component on which have been built.
+The videogames world has undergone a huge evolution in the last years. It has been posible by the GPUs, the central component on which have been built.
 In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.
 
 ![Ray Tracing](/vc/sketches/gameRT.jpg)
