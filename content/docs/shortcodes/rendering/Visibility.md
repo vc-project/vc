@@ -10,12 +10,12 @@ In the present, Ray tracing was here, but this technology is very demanding.The 
 
  ### History
   *  The oldest account of an optical experiment of casting rays from a viewer`s perspective can be found in the XVI century German artist Albrecht Dürer.
-  *  In 1969 Arthur Appel at IBM  describes the Ray Casting Algorithm. It traces the path of a light ray through each pixel and checks for blocking objects.
+  *  In 1969 Arthur Appel at IBM  describes the Ray Casting Algorithm. It traces the path of a light ray through each pixel and checks for blocking objects. This idea fuels new research during all the XX century. A milestone is the production of Sci-Fi classic TRON using Ray Casting for special effects.
   *  In a 1979 Turner Whitted at NVIDIA Research published work on Ray Tracing adressing how to capture reflection, shadows and refraction for illumination models.
   *  In 1984, Lucasfilm’s researchers studied how ray tracing could incorporate a number of common filmmaking techniques — including motion blur, depth of field and translucency which had no digital techniques but lied on optical camera methods to create.
   *  In 1986 at The California Institute of Technology professor Jim Kajiya’s paper, “The Rendering Equation,” gives a physics understanding of light directions and ammounts beheaviours and becomes aframework used extensively in graphics and visual field research.
   
-
+![Historia](/vc/sketches/HistoriaRT.jpg)
 
 
 ### Definition
