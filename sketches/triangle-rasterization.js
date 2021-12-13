@@ -10,17 +10,50 @@ function orient2D(a , b, c) {
 }
 
 new p5((p) => {
-  
   var x = y = 600;
   var xc = yc = x/2;
-  var nsqs = 40; //numero de cuadrados en el grid
-  var nsubsqs = 4; //numero de subpixeles por pixel
-  var sqsize = x/nsqs;
-  var subsqsize = sqsize/nsubsqs;
-  var aaf = 1500; //aaf
-  
+  let nsqs = 40; //numero de cuadrados en el grid
+  let nsubsqs = 4; //numero de subpixeles por pixel
+  let sqsize = x/nsqs;
+  let subsqsize = sqsize/nsubsqs;
+  let aaf = 1500; //aaf
+  tpts = [new Point(Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize),
+    new Point(Math.floor(nsqs/2+Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(nsqs/2+Math.random()*(nsqs/2-1)+1)*sqsize),
+    new Point(Math.floor(Math.random()*(nsqs-1)+1)*sqsize, Math.floor(Math.random()*(nsqs-1)+1)*sqsize)]
+
+
+  p.drawTriangle =  function(){
+    p.strokeWeight(2);
+    p.stroke(255,0,0);
+    p.line(tpts[0].x,tpts[0].y,tpts[1].x,tpts[1].y);    p.stroke(0,255,0);
+    p.line(tpts[0].x,tpts[0].y,tpts[2].x,tpts[2].y);
+    p.stroke(0,0,255);
+    p.line(tpts[2].x,tpts[2].y,tpts[1].x,tpts[1].y);
+    p.stroke(0);
+  }
+
   p.setup = function () {
-    p.createCanvas(x, y);
+    p.createCanvas(x, y + 200);
+
+    nsqsSlider = p.createSlider(40, 200, 10);
+    nsubsqsSlider = p.createSlider(2, 16, 2);
+    aafSlider = p.createSlider(1000, 2500, 100);
+
+    nsqsSlider.position(0, y + 200);
+    nsubsqsSlider.position(0, y + 240);
+    aafSlider.position(0, y + 280);
+
+    drawTriangleButton = p.createButton("Draw Triangle");
+    drawTriangleButton.position(0, y + 330);
+    drawTriangleButton.mousePressed(p.drawTriangle);
+
+    drawTriangleButton = p.createButton("Draw");
+    drawTriangleButton.position(0, y + 350);
+    drawTriangleButton.mousePressed(p.draw);
+
+    tpts = [new Point(Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize),
+      new Point(Math.floor(nsqs/2+Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(nsqs/2+Math.random()*(nsqs/2-1)+1)*sqsize),
+      new Point(Math.floor(Math.random()*(nsqs-1)+1)*sqsize, Math.floor(Math.random()*(nsqs-1)+1)*sqsize)]
   };
 
   p.draw = function () {
@@ -30,6 +63,15 @@ new p5((p) => {
     p.noFill();
     p.strokeWeight(1.5);
 
+    nsqs = nsqsSlider.value();
+    nsubsqs = nsubsqsSlider.value();
+    aaf = aafSlider.value();
+    console.log(nsqs, nsubsqs, aaf);
+    sqsize = x/nsqs;
+    subsqsize = sqsize/nsubsqs;
+
+  
+  
     //Grid
     /*
     for (var i=sqsize/2; i<x; i+=sqsize){
@@ -38,11 +80,6 @@ new p5((p) => {
     for (var j=sqsize/2; j<y; j+=sqsize){
       p.line(0,j,x,j);
     }*/
-
-    //Triangle points
-    tpts = [new Point(Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize),
-            new Point(Math.floor(nsqs/2+Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(nsqs/2+Math.random()*(nsqs/2-1)+1)*sqsize),
-            new Point(Math.floor(Math.random()*(nsqs-1)+1)*sqsize, Math.floor(Math.random()*(nsqs-1)+1)*sqsize)];
 
     orsign = orient2D(tpts[0], tpts[1], tpts[2]) > 0;
 
@@ -174,23 +211,10 @@ new p5((p) => {
 
     for (var i=sqsize/2; i<x; i+=sqsize){
       for(var j=sqsize/2; j<y; j+=sqsize){
-        p.circle(i, j, sqsize/(2*nsubsqs));
+        p.circle(i, j, 2);
       }
     }
-
-    //Triangle drawing
-
-    
-    
-    p.strokeWeight(2);
-    p.stroke(255,0,0);
-    p.line(tpts[0].x,tpts[0].y,tpts[1].x,tpts[1].y);
-    p.stroke(0,255,0);
-    p.line(tpts[0].x,tpts[0].y,tpts[2].x,tpts[2].y);
-    p.stroke(0,0,255);
-    p.line(tpts[2].x,tpts[2].y,tpts[1].x,tpts[1].y);
-    p.stroke(0);
-
+    //p.drawTriangle();
     p.noLoop();
   };
 }, "triangle-rasterization")
