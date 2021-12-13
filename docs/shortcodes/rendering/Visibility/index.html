@@ -8,13 +8,13 @@
 <meta property="og:description" content="Visibility Alghoritms #  Ray tracing #  Introduction #  The videogames world has undergone a huge evolution in the last years. It has been posibleby the GPUs, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/rendering/Visibility/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-13T00:22:37-05:00">
+<meta property="article:modified_time" content="2021-12-13T00:37:46-05:00">
 <title>Visibility | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.2464acf9eaa2489587285a10273a096cdfe6285e11eaad870bd403e1cdfe9639.js integrity="sha256-JGSs+eqiSJWHKFoQJzoJbN/mKF4R6q2HC9QD4c3+ljk=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.35cb5d099ce575115355fe9c124733e7b75897f1426617a5ff57e2a4ce1c35d0.js integrity="sha256-NctdCZzldRFTVf6cEkcz57dYl/FCZhel/1fipM4cNdA=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -151,7 +151,9 @@ Blog
 <ul>
 <li><a href=#history>History</a></li>
 <li><a href=#definition>Definition</a></li>
+<li><a href=#algorithm>Algorithm</a></li>
 <li><a href=#why-ray-tracing>Why Ray tracing?</a></li>
+<li><a href=#disadvantages>Disadvantages</a></li>
 <li><a href=#references>References</a></li>
 </ul>
 </li>
@@ -196,6 +198,12 @@ Definition
 <p>In real world, every light source like the sun or a lightbulb, emits photons in all directions, the vast majority can be seen by our eyes. Ray tracing runs the other way, it emits rays from the camera. Every ray travels a certain distance before reflecting and refracting many times for recalculating the pixel values. The fact that ray tracing uses the camera as a light source instead of simulating the actual light source effect on the environment is justified by the computational chellenge that lies in calculating the light bheavior and effect in several directions. Tracing light in different directions from the light emissor to some or all of the objects could be extremely complex. The pixel by pixel from viewer perspective approach is indeed an efficient way to get outstandig graphic light imaging.</p>
 <p><img src=/vc/sketches/RT.jpg alt="Ray Tracing">
 Ray Tracing central idea</p>
+<h3 id=algorithm>
+Algorithm
+<a class=anchor href=#algorithm>#</a>
+</h3>
+<p>The algorithm is divided into five sections: Camera Ray casting, Ray-object intersection, dealing with
+object transformation, lighting calculations, and recursive ray tracing.</p>
 <h3 id=why-ray-tracing>
 Why Ray tracing?
 <a class=anchor href=#why-ray-tracing>#</a>
@@ -205,6 +213,16 @@ Why Ray tracing?
 A Living Room illuminated using Ray Tracing in Software OctaneRender</p>
 <p><img src=/vc/sketches/LivingRoomRT.jpg alt="Living Room">
 Details</p>
+<h3 id=disadvantages>
+Disadvantages
+<a class=anchor href=#disadvantages>#</a>
+</h3>
+<ul>
+<li>Significant computational cost and hardware requirements.</li>
+<li>Advanced lighting effects such as caustics (light reflected or refracted by curve surfaces) are difficult to render.</li>
+<li>Other algorithms can produce equal or better quality results, for example photon mapping or path tracing.</li>
+</ul>
+<p><img src=/vc/sketches/caustics.jpg alt=caustics></p>
 <h3 id=references>
 References
 <a class=anchor href=#references>#</a>
@@ -214,11 +232,12 @@ References
 <li><a href=https://cedominombre.com/que-es-el-trazado-de-rayos/>https://cedominombre.com/que-es-el-trazado-de-rayos/</a>.</li>
 <li><a href=https://blogs.nvidia.com/blog/2018/03/19/whats-difference-between-ray-tracing-rasterization/>https://blogs.nvidia.com/blog/2018/03/19/whats-difference-between-ray-tracing-rasterization/</a></li>
 <li><a href=https://developer.nvidia.com/discover/ray-tracing>https://developer.nvidia.com/discover/ray-tracing</a></li>
+<li><a href=https://inst.eecs.berkeley.edu/~cs294-13/fa09/lectures/scribe-lecture1.pdf>https://inst.eecs.berkeley.edu/~cs294-13/fa09/lectures/scribe-lecture1.pdf</a></li>
 </ol>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/2a34aab3acdd6a0fd4fcf46aa69ef6a9a5498121 title="Last modified by jortizsi | December 13, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/54b33eae1efcc2c5ced2975786ad5a424b76340e title="Last modified by jortizsi | December 13, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
 <span>December 13, 2021</span>
 </a>
@@ -241,7 +260,9 @@ References
 <ul>
 <li><a href=#history>History</a></li>
 <li><a href=#definition>Definition</a></li>
+<li><a href=#algorithm>Algorithm</a></li>
 <li><a href=#why-ray-tracing>Why Ray tracing?</a></li>
+<li><a href=#disadvantages>Disadvantages</a></li>
 <li><a href=#references>References</a></li>
 </ul>
 </li>
