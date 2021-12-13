@@ -24,15 +24,16 @@ Ray Tracing central idea
 
 
 
+### Why Ray tracing?
+The standard rendering method uses precalculated light maps for the light of all the scene. Some games use volumetric lighting for adding light sources in movement and allowing dynamic shades but this light moderation method requires an intensive use of GPU. Ray tracing allows the obtention of reflections and shades projections with accuracy in the rendering process. In the traditional rendering methods, both effects are optional and can cause meaningful impacts in performance.  
+
+
 ![Living Room](/vc/sketches/LivingRoom.jpg)
 A Living Room illuminated using Ray Tracing in Software OctaneRender
+
+
 ![Living Room](/vc/sketches/LivingRoomRT.jpg)
 Details
-
-
-### Why Ray tracing?
-The standar rendering method uses light maps precalculated and the light of all scene. ANy games use the volumetric lighting for adding light sources in movement and allow dynamic shades. But, this moderation method requires intensive use of GPU.
-Ray tracing allows reflects and shades projecting with accuracy in th erendering procces. In the traditional rendering methods, both effects are optional and can cause meaningfulimpacts in performance.  
 
 
 ### References
