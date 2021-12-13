@@ -29,6 +29,10 @@ In real world, every light source like the sun or a lightbulb, emits photons in 
 Ray Tracing central idea
 
 
+### Algorithm
+The algorithm is divided into five sections: Camera Ray casting, Ray-object intersection, dealing with
+object transformation, lighting calculations, and recursive ray tracing.
+
 
 
 ### Why Ray tracing?
@@ -42,9 +46,17 @@ A Living Room illuminated using Ray Tracing in Software OctaneRender
 ![Living Room](/vc/sketches/LivingRoomRT.jpg)
 Details
 
+### Disadvantages
+* Significant computational cost and hardware requirements.
+* Advanced lighting effects such as caustics (light reflected or refracted by curve surfaces) are difficult to render.
+* Other algorithms can produce equal or better quality results, for example photon mapping or path tracing.
+
+
+![caustics](/vc/sketches/caustics.jpg)
 
 ### References
 1. https://www.muycomputer.com/2021/02/02/ray-tracing-trazado-de-rayos-claves/.
 2. https://cedominombre.com/que-es-el-trazado-de-rayos/.
 3. https://blogs.nvidia.com/blog/2018/03/19/whats-difference-between-ray-tracing-rasterization/
 4. https://developer.nvidia.com/discover/ray-tracing
+5. https://inst.eecs.berkeley.edu/~cs294-13/fa09/lectures/scribe-lecture1.pdf
