@@ -2,19 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Visibility Alghoritms #  Ray tracing #  The videogames world has undergone a huge evolution in the last years. It has been posible by the GPU, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
+<meta name=description content="Visibility Alghoritms #  Ray tracing #  Introduction #  The videogames world has undergone a huge evolution in the last years. It has been posibleby the GPUs, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Visibility Alghoritms #  Ray tracing #  The videogames world has undergone a huge evolution in the last years. It has been posible by the GPU, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
+<meta property="og:description" content="Visibility Alghoritms #  Ray tracing #  Introduction #  The videogames world has undergone a huge evolution in the last years. It has been posibleby the GPUs, the central component on which have been built. In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/rendering/Visibility/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-12T08:13:23-05:00">
+<meta property="article:modified_time" content="2021-12-12T20:08:23-05:00">
 <title>Visibility | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.9167aa35fee8fb8d79fccd11c680d15e5f3a5c2d91b7c47517d1f9eec4d0fdb3.js integrity="sha256-kWeqNf7o+415/M0RxoDRXl86XC2Rt8R1F9H57sTQ/bM=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.0fa38353086667e5a4ba918896f9daa9560d0b2722f19169c2c5bbae4fef46e9.js integrity="sha256-D6ODUwhmZ+WkupGIlvnaqVYNCyci8ZFpwsW7rk/vRuk=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -138,7 +138,8 @@ Blog
 <ul>
 <li><a href=#visibility-alghoritms>Visibility Alghoritms</a>
 <ul>
-<li><a href=#ray-tracing>Ray tracing</a>
+<li><a href=#ray-tracing>Ray tracing</a></li>
+<li><a href=#introduction>Introduction</a>
 <ul>
 <li><a href=#definition>Definition</a></li>
 <li><a href=#why-ray-tracing>Why Ray tracing?</a></li>
@@ -159,15 +160,20 @@ Visibility Alghoritms
 Ray tracing
 <a class=anchor href=#ray-tracing>#</a>
 </h2>
-<p>The videogames world has undergone a huge evolution in the last years. It has been posible
-by the GPU, the central component on which have been built.
+<h2 id=introduction>
+Introduction
+<a class=anchor href=#introduction>#</a>
+</h2>
+<p>The videogames world has undergone a huge evolution in the last years. It has been posibleby the GPUs, the central component on which have been built.
 In the present, Ray tracing was here, but this technology is very demanding.The graphic boards like RTX 3090 and RX 6900 cant give the correct shape in the geometry level with the ray tracing method.</p>
 <h3 id=definition>
 Definition
 <a class=anchor href=#definition>#</a>
 </h3>
-<p>Ray tracing is a rendering method that allows create, with real form, the ligth behavior in the object interaction.
-In this method, rays of light are projected, calculating the properties of the reflected and refracted light. In real world, every light source like the sun or a lightbulb, emits photons in all directions, the vast majority can see our eyes. Ray tracing runs the other way, emits ray from the camera. Every ray travel any distance before reflect many times for recalculate the pixel value.</p>
+<p>Ray tracing is a rendering method that allows to create, with real form, the ligth behavior in the object interaction. In the real world light can travel environments in several ways different than a straight line, light can be reflected from one object to another, be blocked by objects causing shadows, or pass through transparent objects causing refractions (a direction change). In this method, rays of light are projected, calculating the properties of the reflected and refracted light.</p>
+<p>In real world, every light source like the sun or a lightbulb, emits photons in all directions, the vast majority can be seen by our eyes. Ray tracing runs the other way, it emits rays from the camera. Every ray travels a certain distance before reflecting and refracting many times for recalculating the pixel values. The fact that ray tracing uses the camera as a light source instead of simulating the actual light source effect on the environment is justified by the computational chellenge that lies in calculating the light bheavior and effect in several directions. Tracing light in different directions from the light emissor to some or all of the objects could be extremely complex. The pixel by pixel from viewer perspective approach is indeed an efficient way to get outstandig graphic light imaging.</p>
+<p><img src=/vc/sketches/LivingRoom.jpg alt="Living Room">
+<img src=/vc/sketches/LivingRoomRT.jpg alt="Living Room"></p>
 <h3 id=why-ray-tracing>
 Why Ray tracing?
 <a class=anchor href=#why-ray-tracing>#</a>
@@ -185,9 +191,9 @@ References
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/a5386e9959fe6195655bbeae66daedb93d76e897 title="Last modified by Juan Camilo Acosta | December 12, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/b5bbb860de8239f06bbaba11919bbca7e5ff56fe title="Last modified by jortizsi | December 13, 2021" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
-<span>December 12, 2021</span>
+<span>December 13, 2021</span>
 </a>
 </div>
 </div>
@@ -203,7 +209,8 @@ References
 <ul>
 <li><a href=#visibility-alghoritms>Visibility Alghoritms</a>
 <ul>
-<li><a href=#ray-tracing>Ray tracing</a>
+<li><a href=#ray-tracing>Ray tracing</a></li>
+<li><a href=#introduction>Introduction</a>
 <ul>
 <li><a href=#definition>Definition</a></li>
 <li><a href=#why-ray-tracing>Why Ray tracing?</a></li>
