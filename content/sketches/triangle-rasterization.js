@@ -10,6 +10,7 @@ function orient2D(a , b, c) {
 }
 
 new p5((p) => {
+  var doAntialiasing = false;
   var x = y = 600;
   var xc = yc = x/2;
   let nsqs = 40; //numero de cuadrados en el grid
@@ -32,23 +33,43 @@ new p5((p) => {
     p.stroke(0);
   }
 
+  p.antialiasing = function(){
+    doAntialiasing = true;
+  }
+
   p.setup = function () {
-    p.createCanvas(x, y + 200);
+    p.createCanvas(x, y + 250);
 
     nsqsSlider = p.createSlider(40, 200, 10);
     nsubsqsSlider = p.createSlider(2, 16, 2);
     aafSlider = p.createSlider(1000, 2500, 100);
 
-    nsqsSlider.position(0, y + 200);
-    nsubsqsSlider.position(0, y + 240);
-    aafSlider.position(0, y + 280);
+    nsqsSliderLabel = p.createElement("h6", "");
+    nsubsqsSliderLabel = p.createElement("h6", "");
+    aafSliderLabel = p.createElement("h6", "");
+    antailiasingCheckBox = p.createCheckbox("Antiailiasing", false);
+
+    nsqsSlider.position(10, y + 200);
+    nsubsqsSlider.position(10, y + 240);
+    aafSlider.position(10, y + 280);
+    antailiasingCheckBox.position(10, y + 400);
+
+    nsqsSliderLabel.position(90, y + 200);
+    nsqsSliderLabel.style("color","black");
+    nsubsqsSliderLabel.position(95, y + 240);
+    nsubsqsSliderLabel.style("color","black");
+    aafSliderLabel.position(85, y + 280);
+    aafSliderLabel.style("color","black");
+    antailiasingCheckBox.style("color","black");
+
+    antailiasingCheckBox.changed(p.antialiasing);
 
     drawTriangleButton = p.createButton("Draw Triangle");
-    drawTriangleButton.position(0, y + 330);
+    drawTriangleButton.position(10, y + 330);
     drawTriangleButton.mousePressed(p.drawTriangle);
 
     drawTriangleButton = p.createButton("Draw");
-    drawTriangleButton.position(0, y + 350);
+    drawTriangleButton.position(10, y + 370);
     drawTriangleButton.mousePressed(p.draw);
 
     tpts = [new Point(Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize, Math.floor(Math.random()*(nsqs/2-1)+1)*sqsize),
@@ -63,10 +84,12 @@ new p5((p) => {
     p.noFill();
     p.strokeWeight(1.5);
 
+    nsqsSliderLabel.html(nsqsSlider.value());
+    nsubsqsSliderLabel.html(nsubsqsSlider.value());
+    aafSliderLabel.html(aafSlider.value());
     nsqs = nsqsSlider.value();
     nsubsqs = nsubsqsSlider.value();
     aaf = aafSlider.value();
-    console.log(nsqs, nsubsqs, aaf);
     sqsize = x/nsqs;
     subsqsize = sqsize/nsubsqs;
 
@@ -115,18 +138,18 @@ new p5((p) => {
           for (var ssi=0; ssi<nsubsqs; ssi++){
             wss = [];
             wss[0] = [ws[0][0] + (tpts[1].x-tpts[0].x)*ssi*subsqsize, ws[0][1] + (tpts[2].x-tpts[1].x)*ssi*subsqsize, ws[0][2] + (tpts[0].x-tpts[2].x)*ssi*subsqsize];
-            //
             if(wss[0][0]>0 === orsign && wss[0][1]>0 === orsign && wss[0][2]>0 === orsign){
               p.fill(0);
               p.square(i, j+ssi*subsqsize, subsqsize);
             } 
             // antialising
             else {
-              wssmin = Math.min(...wss[0]);
-              //implementar la division para no usar area sino altura del trapecio.
-              p.fill(-255*wssmin/aaf);
-              p.square(i, j+ssi*subsqsize, subsqsize);
-              if(wssmin<max) max = wssmin;
+              if(doAntialiasing){
+                wssmin = Math.min(...wss[0]);
+                p.fill(-255*wssmin/aaf);
+                p.square(i, j+ssi*subsqsize, subsqsize);
+                if(wssmin<max) max = wssmin;
+              }
             }
             for (var ssj=1; ssj<nsubsqs; ssj++){
               wss[ssj] = [wss[0][0] - (tpts[1].y-tpts[0].y)*ssj*subsqsize, wss[0][1] - (tpts[2].y-tpts[1].y)*ssj*subsqsize, wss[0][2] - (tpts[0].y-tpts[2].y)*ssj*subsqsize];
@@ -136,11 +159,12 @@ new p5((p) => {
               } 
               //antialising
               else {
-                wssmin = Math.min(...wss[ssj]);
-                //implementar la division para no usar area sino altura del trapecio.
-                p.fill(-255*wssmin/aaf);
-                p.square(i+ssj*subsqsize, j+ssi*subsqsize, subsqsize);
-                if(wssmin<max) max = wssmin;
+                if(doAntialiasing){
+                  wssmin = Math.min(...wss[0]);
+                  p.fill(-255*wssmin/aaf);
+                  p.square(i, j+ssi*subsqsize, subsqsize);
+                  if(wssmin<max) max = wssmin;
+                }
               }
             }
           }
