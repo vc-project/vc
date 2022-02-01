@@ -1103,7 +1103,7 @@ let images;
 
 const sampleRes = 100;
 
-const nimages = 12;
+const nimages = 20;
 
 //
 
@@ -1112,13 +1112,14 @@ const nimages = 12;
 function preload() {
   // readShader: https://github.com/VisualComputing/p5.shaderbox#readshader
   mosaic_shader = readShader('/vc/sketches/photomosaic.frag');
-  img = loadImage('/vc/sketches/mandrill.png');
+  mandrill_img = loadImage('/vc/sketches/mandrill.png');
+  img = loadImage('https://picsum.photos/500');
   om = loadImage('/vc/sketches/om.png');
   images = [];
   for(let i=1; i<=nimages; i++){
-    images.push(loadImage(`/vc/sketches/palette2/${i}.jpg`));
+    //images.push(loadImage(`/vc/sketches/palette2/${i}.jpg`));
     //images.push(loadImage(`/vc/sketches/palette/${i}.png`));
-    //images.push(loadImage('https://picsum.photos/100'));
+    images.push(loadImage(`https://picsum.photos/100?random=${i}`));
   }
 }
 
@@ -1126,6 +1127,10 @@ function setup() {
   createCanvas(600, 600, WEBGL);
   noStroke();
   textureMode(NORMAL);
+/*
+  for(let i=1; i<=nimages; i++){
+    images.push(loadImage('https://picsum.photos/100'));
+  }*/
 
   imQuad = createQuadrille(images);
   imGraph = createGraphics(sampleRes * imQuad.width, sampleRes);
@@ -1134,8 +1139,10 @@ function setup() {
   gridSize.position(10, 25);
   gridSize.style('width', '580px');
   gridSize.hide();
-  enable_shader = createCheckbox('enable shader', false);
-  enable_shader.style('color', 'magenta');
+  enable_shader = createCheckbox('Photomosaic', false);
+  enable_shader.style('color', 'white');
+  mandrill = createCheckbox('Mandrill', false);
+  mandrill.style('color', 'white');
   shader(mosaic_shader);
   mosaic_shader.setUniform('img', img);
   mosaic_shader.setUniform('om',om);
@@ -1151,7 +1158,15 @@ function setup() {
       gridSize.hide();
     }
   });
+  mandrill.changed(() => {
+    if (mandrill.checked()) {
+      mosaic_shader.setUniform('img', mandrill_img);
+    } else {
+      mosaic_shader.setUniform('img', img);
+    }
+  });
   enable_shader.position(10, 10);
+  mandrill.position(windowWidth/2, 10);
   sample();
 }
 
