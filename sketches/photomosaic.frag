@@ -1,0 +1,77 @@
+/*precision mediump float;
+
+// texture is sent by the sketch
+uniform sampler2D img;
+
+// spatial coherence activation is sent by the sketch
+uniform bool original;
+
+// grid size is sent by the sketch
+uniform float resolution;
+
+// interpolated color (same name and type as in vertex shader)
+varying vec4 vVertexColor;
+// interpolated texcoord (same name and type as in vertex shader)
+varying vec2 vTexCoord;
+
+void main() {
+  // texture2D(texture, vTexCoord) samples texture at vTexCoord 
+  // and returns the normalized texel color
+  // texel color times vVertexColor gives the final normalized pixel color
+  if(!original){
+    vec2 vTexC = floor(vTexCoord*resolution) / resolution; // + vec2(50.0, 50.0);
+    gl_FragColor =  texture2D(img, vTexC);
+  } else {
+    gl_FragColor = texture2D(img, vTexCoord);
+  }
+  
+}*/
+
+precision mediump float;
+
+// img (image or video) is sent by the sketch
+uniform sampler2D img;
+// palette is sent by the sketch
+uniform sampler2D palette;
+
+// om is sent by the sketch
+uniform sampler2D om;
+// displays original
+uniform bool original;
+// toggles om display
+uniform bool om_on;
+// target horizontal & vertical resolution
+uniform float resolution;
+
+// interpolated color (same name and type as in vertex shader)
+varying vec4 vVertexColor;
+// interpolated texcoord (same name and type as in vertex shader)
+varying vec2 vTexCoord;
+
+float luma(vec4 color){
+  return 0.299*color.r + 0.587*color.g + 0.114*color.b;
+}
+
+void main() {
+  if (original) {
+    gl_FragColor = texture2D(img, vTexCoord);
+  }
+  else {
+    // remap omCoord to [0.0, resolution] ∈ R
+    vec2 omCoord = vTexCoord * resolution;
+    // remap imgCoord to [0.0, resolution] ∈ Z
+    vec2 imgCoord = floor(omCoord);
+    // remap omCoord to [0.0, 1.0] ∈ R
+    omCoord = omCoord - imgCoord;
+    // remap imgCoord to [0.0, 1.0] ∈ R
+    imgCoord = imgCoord / vec2(resolution);
+    // image texel (may be used as color hash key, e.g., photomosaic)
+    vec4 imgTexel = texture2D(img, imgCoord);
+    if(om_on) {
+      gl_FragColor = texture2D(palette, vec2(luma(texture2D(img, imgCoord)),50.0));
+    }
+    else {
+      gl_FragColor = imgTexel;
+    }
+  }
+}
