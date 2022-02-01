@@ -43,6 +43,8 @@ uniform bool om_on;
 // target horizontal & vertical resolution
 uniform float resolution;
 
+uniform float npalette;
+
 // interpolated color (same name and type as in vertex shader)
 varying vec4 vVertexColor;
 // interpolated texcoord (same name and type as in vertex shader)
@@ -68,7 +70,9 @@ void main() {
     // image texel (may be used as color hash key, e.g., photomosaic)
     vec4 imgTexel = texture2D(img, imgCoord);
     if(om_on) {
-      gl_FragColor = texture2D(palette, vec2(luma(texture2D(img, imgCoord)),50.0));
+      vec4 omTexel = texture2D(om, omCoord);
+      gl_FragColor = texture2D(palette, vec2(floor(luma(texture2D(img, imgCoord))*npalette)/npalette+omCoord.x/npalette, omCoord.y));
+      //gl_FragColor = texture2D(palette, vec2(luma(texture2D(img, imgCoord)),omCoord.y));
     }
     else {
       gl_FragColor = imgTexel;
