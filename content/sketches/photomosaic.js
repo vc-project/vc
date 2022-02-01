@@ -1103,6 +1103,8 @@ let images;
 
 const sampleRes = 100;
 
+const nimages = 12;
+
 //
 
 //
@@ -1113,8 +1115,9 @@ function preload() {
   img = loadImage('/vc/sketches/mandrill.png');
   om = loadImage('/vc/sketches/om.png');
   images = [];
-  for(let i=1; i<=6; i++){
-    images.push(loadImage(`/vc/sketches/palette/${i}.png`));
+  for(let i=1; i<=nimages; i++){
+    images.push(loadImage(`/vc/sketches/palette2/${i}.jpg`));
+    //images.push(loadImage(`/vc/sketches/palette/${i}.png`));
     //images.push(loadImage('https://picsum.photos/100'));
   }
 }
@@ -1138,6 +1141,7 @@ function setup() {
   mosaic_shader.setUniform('om',om);
   mosaic_shader.setUniform('om_on', true);
   mosaic_shader.setUniform('original', true);
+  mosaic_shader.setUniform('npalette', nimages);
   enable_shader.changed(() => {
     if (enable_shader.checked()) {
       mosaic_shader.setUniform('original', false);
