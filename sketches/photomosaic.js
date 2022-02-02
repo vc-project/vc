@@ -1127,10 +1127,7 @@ function setup() {
   createCanvas(600, 600, WEBGL);
   noStroke();
   textureMode(NORMAL);
-/*
-  for(let i=1; i<=nimages; i++){
-    images.push(loadImage('https://picsum.photos/100'));
-  }*/
+
 
   imQuad = createQuadrille(images);
   imGraph = createGraphics(sampleRes * imQuad.width, sampleRes);

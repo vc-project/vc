@@ -2,19 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Shaders #  Image Processing #           &#34;  Spatial Coherence #           &#34;  Photomosaic #           &#34;  ">
+<meta name=description content="Shaders #  Image Processing #           &#34;  Spatial Coherence #  Hardware #           &#34;  Software #           &#34;  Photomosaic #  Hardware #           &#34;  Software #           &#34;">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Shaders #  Image Processing #           &#34;  Spatial Coherence #           &#34;  Photomosaic #           &#34;  ">
+<meta property="og:description" content="Shaders #  Image Processing #           &#34;  Spatial Coherence #  Hardware #           &#34;  Software #           &#34;  Photomosaic #  Hardware #           &#34;  Software #           &#34;">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/shaders/shaders/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2022-02-01T12:55:35-05:00">
+<meta property="article:modified_time" content="2022-02-01T22:27:45-05:00">
 <title>Shaders | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.aa63885c50277807b050feb8a39c48cc5cd2131624b90ac9321f55b9e626e94c.js integrity="sha256-qmOIXFAneAewUP64o5xIzFzSExYkuQrJMh9VueYm6Uw=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.1602614bfcc3ba3f33ff2272331c3a8bf62bbd07118208b1621ededb1687a1dc.js integrity="sha256-FgJhS/zDuj8z/yJyMxw6i/YrvQcRggixYh7e2xaHodw=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -150,8 +150,18 @@ Blog
 <li><a href=#shaders>Shaders</a>
 <ul>
 <li><a href=#image-processing>Image Processing</a></li>
-<li><a href=#spatial-coherence>Spatial Coherence</a></li>
-<li><a href=#photomosaic>Photomosaic</a></li>
+<li><a href=#spatial-coherence>Spatial Coherence</a>
+<ul>
+<li><a href=#hardware>Hardware</a></li>
+<li><a href=#software>Software</a></li>
+</ul>
+</li>
+<li><a href=#photomosaic>Photomosaic</a>
+<ul>
+<li><a href=#hardware-1>Hardware</a></li>
+<li><a href=#software-1>Software</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -187,6 +197,10 @@ Image Processing
 Spatial Coherence
 <a class=anchor href=#spatial-coherence>#</a>
 </h2>
+<h3 id=hardware>
+Hardware
+<a class=anchor href=#hardware>#</a>
+</h3>
 <iframe id=spatialCoherence style=width:625px;height:625px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -204,10 +218,35 @@ Spatial Coherence
           </body>
         </html>
       "></iframe>
+<h3 id=software>
+Software
+<a class=anchor href=#software>#</a>
+</h3>
+<iframe id=spatialCoherenceBySoftware style=width:625px;height:625px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/vc/sketches/spatialCoherenceBySoftware.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
 <h2 id=photomosaic>
 Photomosaic
 <a class=anchor href=#photomosaic>#</a>
 </h2>
+<h3 id=hardware-1>
+Hardware
+<a class=anchor href=#hardware-1>#</a>
+</h3>
 <iframe id=photomosaic style=width:625px;height:625px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -225,12 +264,33 @@ Photomosaic
           </body>
         </html>
       "></iframe>
+<h3 id=software-1>
+Software
+<a class=anchor href=#software-1>#</a>
+</h3>
+<iframe id=photomosaicBySoftware style=width:625px;height:625px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=/vc/sketches/photomosaicBySoftware.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/8a059f76af61395e6630a7c2e51f695fae70725b title="Last modified by saparici0 | February 1, 2022" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/55c00a63b56cdac814801ac34ca8c9a286cdf03a title="Last modified by Alejandro Ortiz | February 2, 2022" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
-<span>February 1, 2022</span>
+<span>February 2, 2022</span>
 </a>
 </div>
 </div>
@@ -247,8 +307,18 @@ Photomosaic
 <li><a href=#shaders>Shaders</a>
 <ul>
 <li><a href=#image-processing>Image Processing</a></li>
-<li><a href=#spatial-coherence>Spatial Coherence</a></li>
-<li><a href=#photomosaic>Photomosaic</a></li>
+<li><a href=#spatial-coherence>Spatial Coherence</a>
+<ul>
+<li><a href=#hardware>Hardware</a></li>
+<li><a href=#software>Software</a></li>
+</ul>
+</li>
+<li><a href=#photomosaic>Photomosaic</a>
+<ul>
+<li><a href=#hardware-1>Hardware</a></li>
+<li><a href=#software-1>Software</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -160,23 +160,45 @@ function setup() {
   gridSize.position(10, 25);
   gridSize.style('width', '580px');
   gridSize.hide();
+
   enable_shader = createCheckbox('enable shader', false);
   enable_shader.style('color', 'magenta');
+
+  enable_om = createCheckbox('enable om', false);
+  enable_om.style('color', 'magenta');
+  enable_om.hide();
+
   shader(texture_shader);
   texture_shader.setUniform('img', img);
   texture_shader.setUniform('om',om);
-  texture_shader.setUniform('om_on', true);
+  texture_shader.setUniform('om_on', false);
   texture_shader.setUniform('original', true);
+
   enable_shader.changed(() => {
     if (enable_shader.checked()) {
       texture_shader.setUniform('original', false);
       gridSize.show();
+      enable_om.show()
     } else {
       texture_shader.setUniform('original', true);
+      enable_om.hide()
       gridSize.hide();
     }
   });
+
+  enable_om.changed(() => {
+    if (enable_om.checked()) {
+      texture_shader.setUniform('om_on', true);
+      gridSize.show();
+    } else {
+      texture_shader.setUniform('om_on', false);
+      gridSize.hide();
+    }
+  });
+
   enable_shader.position(10, 10);
+  enable_om.position(windowWidth/2, 10);
+
 }
 
 function draw() {
