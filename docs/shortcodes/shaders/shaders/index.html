@@ -2,19 +2,19 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Shaders #  Image Processing #           &#34;  Spatial Coherence #  Hardware #           &#34;  Software #           &#34;  Photomosaic #  Hardware #           &#34;  Software #           &#34;">
+<meta name=description content="Shaders #  Image Processing #  Image processing means processing digital image by means of a digital computer. The target of this is extract useful information using computer alghoritms. An image is defined as two-dimensional function, F(x,y), where x and y are spatial coordinates, and amplitude values of F are finite. Digital image is composed of a finite number of elements have a particular value in a particular location. These elements are referred like pixels.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="Shaders #  Image Processing #           &#34;  Spatial Coherence #  Hardware #           &#34;  Software #           &#34;  Photomosaic #  Hardware #           &#34;  Software #           &#34;">
+<meta property="og:description" content="Shaders #  Image Processing #  Image processing means processing digital image by means of a digital computer. The target of this is extract useful information using computer alghoritms. An image is defined as two-dimensional function, F(x,y), where x and y are spatial coordinates, and amplitude values of F are finite. Digital image is composed of a finite number of elements have a particular value in a particular location. These elements are referred like pixels.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://vc-project.github.io/vc/docs/shortcodes/shaders/shaders/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2022-02-01T22:27:45-05:00">
+<meta property="article:modified_time" content="2022-02-03T17:32:51-05:00">
 <title>Shaders | Visual Computing</title>
 <link rel=manifest href=/vc/manifest.json>
 <link rel=icon href=/vc/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/vc/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/vc/flexsearch.min.js></script>
-<script defer src=/vc/en.search.min.1602614bfcc3ba3f33ff2272331c3a8bf62bbd07118208b1621ededb1687a1dc.js integrity="sha256-FgJhS/zDuj8z/yJyMxw6i/YrvQcRggixYh7e2xaHodw=" crossorigin=anonymous></script>
+<script defer src=/vc/en.search.min.98bccd5b20e25e8de7841db7e8a0d3f119ed5896912fa94019fcaee418fbb571.js integrity="sha256-mLzNWyDiXo3nhB236KDT8RntWJaRL6lAGfyu5Bj7tXE=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -158,8 +158,10 @@ Blog
 </li>
 <li><a href=#photomosaic>Photomosaic</a>
 <ul>
+<li><a href=#history>History</a></li>
 <li><a href=#hardware-1>Hardware</a></li>
 <li><a href=#software-1>Software</a></li>
+<li><a href=#hardware-vs-software>Hardware vs Software</a></li>
 </ul>
 </li>
 </ul>
@@ -176,6 +178,9 @@ Shaders
 Image Processing
 <a class=anchor href=#image-processing>#</a>
 </h2>
+<p>Image processing means processing digital image by means of a digital computer. The target of this is extract useful information using computer alghoritms.
+An image is defined as two-dimensional function, F(x,y), where x and y are spatial coordinates, and amplitude values of F are finite.
+Digital image is composed of a finite number of elements have a particular value in a particular location. These elements are referred like pixels.</p>
 <iframe id=imageProcessing style=width:525px;height:525px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -197,6 +202,7 @@ Image Processing
 Spatial Coherence
 <a class=anchor href=#spatial-coherence>#</a>
 </h2>
+<p>Spatial coherence is a technique for sampling an image in a low resolution area.</p>
 <h3 id=hardware>
 Hardware
 <a class=anchor href=#hardware>#</a>
@@ -243,6 +249,13 @@ Software
 Photomosaic
 <a class=anchor href=#photomosaic>#</a>
 </h2>
+<p>A photomosaic is an image composed of many smaller photographs.</p>
+<h3 id=history>
+History
+<a class=anchor href=#history>#</a>
+</h3>
+<p>The combination of modern computer technology and digital photo manipulation allowed the first creation of photo mosaics in 90&rsquo;s. Robert Silvers played a very important roll in development of photo mosaics. At 27 years of age in 1995 the MIT student developed an algorithm, which could organize many photo files into a complete image. This technology was patented in many different countries.
+Robert Silvers became a photo mosaic artist. His artworks include portraits of famous people like Marilyn Monroe, but also artistic manipulations of classic paintings.</p>
 <h3 id=hardware-1>
 Hardware
 <a class=anchor href=#hardware-1>#</a>
@@ -285,12 +298,17 @@ Software
           </body>
         </html>
       "></iframe>
+<h3 id=hardware-vs-software>
+Hardware vs Software
+<a class=anchor href=#hardware-vs-software>#</a>
+</h3>
+<p>The photomosaic implemented by software is computationally expensive respect to the photomosaic implemented by hardware. In software implementation, scroll the image by the sampling area applying the luma function (can be other fuction like avg), beacuse js doesn&rsquo;t have representation of vectors like fragment shader, which facilitates these operations. The implementation by hardware is implemented in th GPU, in this type of implementations is more optimized the algorithm processing, for this reason is not computionally expensive. The implementation by hardware is made for processign in graphics dedicated processors, the adequate processors for image processing.</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/55c00a63b56cdac814801ac34ca8c9a286cdf03a title="Last modified by Alejandro Ortiz | February 2, 2022" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/vc-project/vc/commit/c9c46dc157ce921892aa99b185a43873c73ad7a5 title="Last modified by juacostar | February 3, 2022" target=_blank rel=noopener>
 <img src=/vc/svg/calendar.svg class=book-icon alt=Calendar>
-<span>February 2, 2022</span>
+<span>February 3, 2022</span>
 </a>
 </div>
 </div>
@@ -315,8 +333,10 @@ Software
 </li>
 <li><a href=#photomosaic>Photomosaic</a>
 <ul>
+<li><a href=#history>History</a></li>
 <li><a href=#hardware-1>Hardware</a></li>
 <li><a href=#software-1>Software</a></li>
+<li><a href=#hardware-vs-software>Hardware vs Software</a></li>
 </ul>
 </li>
 </ul>
