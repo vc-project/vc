@@ -41,6 +41,15 @@ Robert Silvers became a photo mosaic artist. His artworks include portraits of f
 {{< p5-iframe sketch="/vc/sketches/photomosaicBySoftware.js"  width="625" height="625" >}}
 
 
+
+### Hardware
+
+{{< p5-iframe sketch="/vc/sketches/swissTrainHardwareMosaic.js"  width="505" height="385" >}}
+
+### Software
+
+{{< p5-iframe sketch="/vc/sketches/swissTrainSoftwareMosaic.js"  width="505" height="385" >}}
+
 ### Hardware vs Software
 
 The photomosaic implemented by software is computationally expensive respect to the photomosaic implemented by hardware. In software implementation, scroll the image by the sampling area applying the luma function (can be other fuction like avg), beacuse js doesn't have representation of vectors like fragment shader, which facilitates these operations. The implementation by hardware is implemented in th GPU, in this type of implementations is more optimized the algorithm processing, for this reason is not computionally expensive. The implementation by hardware is made for processign in graphics dedicated processors, the adequate processors for image processing.
