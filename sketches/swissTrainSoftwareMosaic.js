@@ -1001,7 +1001,7 @@ function setup() {
   gridSize.style('width', '400px');
   gridSize.hide();
 
-  enable_shader = createCheckbox('enable shader', false);
+  enable_shader = createCheckbox('Photomosaic', false);
   enable_shader.style('color', 'magenta');
   enable_shader.position(10, 10);
 

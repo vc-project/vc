@@ -1107,7 +1107,6 @@ let playing = true;
 
 function preload() {
 
-
   images = []
 
   // readShader: https://github.com/VisualComputing/p5.shaderbox#readshader
@@ -1117,6 +1116,8 @@ function preload() {
     images.push(loadImage(`https://picsum.photos/100?random=${i}`));
   }
 
+  vid = createVideo('/vc/sketches/swissTrain.mp4');
+
 }
 
 
@@ -1124,7 +1125,6 @@ function setup() {
   createCanvas(480, 360, WEBGL);
   // noCanvas();
 
-  vid = createVideo('/vc/sketches/swissTrain.mp4');
   vid.size(480, 360);
   vid.volume(0);
 
@@ -1132,11 +1132,9 @@ function setup() {
   textureMode(NORMAL);
 
   shader(mosaic_shader);
-  //mosaic_shader.setUniform('img', img);
-  //mosaic_shader.setUniform('om',om);
-  //mosaic_shader.setUniform('om_on', true);
   mosaic_shader.setUniform('original', true);
   mosaic_shader.setUniform('npalette', nimages);
+  mosaic_shader.setUniform('om_on', false);
 
   imQuad = createQuadrille(images);
   imGraph = createGraphics(sampleRes * imQuad.width, sampleRes);
@@ -1146,30 +1144,45 @@ function setup() {
   gridSize.style('width', '400px');
   gridSize.hide();
 
-  enable_shader = createCheckbox('enable shader', false);
+  enable_shader = createCheckbox('Shader', false);
   enable_shader.style('color', 'magenta');
+
+  enable_om = createCheckbox('Photomosaic', false);
+  enable_om.style('color', 'magenta');
+  enable_om.hide();
+
   enable_shader.position(10, 10);
+  enable_om.position(windowWidth/2, 10);
 
   enable_shader.changed(() => {
     if (enable_shader.checked()) {
       mosaic_shader.setUniform('original', false);
+      enable_om.show();
       gridSize.show();
     } else {
       mosaic_shader.setUniform('original', true);
+      enable_om.hide();
       gridSize.hide(); 
     }
   });
-  //
+  
+  enable_om.changed(() => {
+    if (enable_om.checked()) {
+      mosaic_shader.setUniform('om_on', true);
+      gridSize.show();
+    } else {
+      mosaic_shader.setUniform('om_on', false);
+      gridSize.hide();
+    }
+  });
   
   vid.loop();
   vid.hide(); // hides the html video loader
   vid.position(0.0);
 
-
   sample();
 
 }
-
 
 function sample(){
   if (imGraph.width !== sampleRes * imQuad.width) {
@@ -1180,27 +1193,14 @@ function sample(){
   mosaic_shader.setUniform('palette', imGraph);
 }
 
-
-
-
 function draw() {
-  
-  background(220);
-  let img = vid.get();
-  //img.loadPixels();
+  shader(mosaic_shader);
+  img = vid.get();
   mosaic_shader.setUniform('img', img);
-  //--
-
   if (enable_shader.checked()) {
     mosaic_shader.setUniform('resolution', gridSize.value());
   }
   cover({texture: true});
-  
-
-  //textSize(40);
-  //counter = nf(vid.time(), 0, 2); // first argument is decimal places to the left (use zero to default to places necessary)
-  //text(counter, 10, 300);
-  
 }
 
 function windowResized() {

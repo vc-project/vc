@@ -1004,10 +1004,10 @@ function setup() {
   gridSize.style('width', '580px');
   gridSize.hide();
 
-  mandrill = createCheckbox('mandrill', false);
+  mandrill = createCheckbox('Mandrill', false);
   mandrill.style('color', 'magenta');
 
-  enable_shader = createCheckbox('enable shader', false);
+  enable_shader = createCheckbox('Photomosaic', false);
   enable_shader.style('color', 'magenta');
 
   enable_shader.changed(() => {
