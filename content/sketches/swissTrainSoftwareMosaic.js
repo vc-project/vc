@@ -975,6 +975,7 @@ function preload() {
 
   images = []
 
+  // carga de imágenes
   for(let i=1; i<=nimages; i++){
     images.push(loadImage(`https://picsum.photos/100?random=${i}`));
   }
@@ -986,6 +987,7 @@ function setup() {
   createCanvas(480, 360);
   // noCanvas();
 
+  // creación del video
   vid = createVideo('/vc/sketches/swissTrain.mp4');
   vid.size(480, 360);
   vid.volume(0);
@@ -1001,6 +1003,7 @@ function setup() {
   gridSize.style('width', '400px');
   gridSize.hide();
 
+  // agregando elementos html
   enable_shader = createCheckbox('Photomosaic', false);
   enable_shader.style('color', 'magenta');
   enable_shader.position(10, 10);
@@ -1024,6 +1027,7 @@ function setup() {
 }
 
 
+// función de muestreo del video
 function sample(){
   if (imGraph.width !== sampleRes * imQuad.width) {
     imGraph = createGraphics(sampleRes * imQuad.width, sampleRes);
