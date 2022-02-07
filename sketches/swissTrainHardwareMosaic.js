@@ -1112,10 +1112,12 @@ function preload() {
   // readShader: https://github.com/VisualComputing/p5.shaderbox#readshader
   mosaic_shader = readShader('/vc/sketches/photomosaic.frag');
 
+  // Carga de imágenes
   for(let i=1; i<=nimages; i++){
     images.push(loadImage(`https://picsum.photos/100?random=${i}`));
   }
 
+  //creación del video
   vid = createVideo('/vc/sketches/swissTrain.mp4');
 
 }
@@ -1131,6 +1133,7 @@ function setup() {
   //
   textureMode(NORMAL);
 
+  // creación del shader
   shader(mosaic_shader);
   mosaic_shader.setUniform('original', true);
   mosaic_shader.setUniform('npalette', nimages);
@@ -1144,6 +1147,7 @@ function setup() {
   gridSize.style('width', '400px');
   gridSize.hide();
 
+  // Agregando elementos html adicionales
   enable_shader = createCheckbox('Shader', false);
   enable_shader.style('color', 'magenta');
 
@@ -1184,10 +1188,12 @@ function setup() {
 
 }
 
+// función de muestreo del video
 function sample(){
   if (imGraph.width !== sampleRes * imQuad.width) {
     imGraph = createGraphics(sampleRes * imQuad.width, sampleRes);
   }
+  // organización de la paleta de imágenes
   imQuad.sort({ ascending: true, cellLength: sampleRes});
   drawQuadrille(imQuad, {graphics: imGraph, cellLength: sampleRes, outlineWeight: 0});
   mosaic_shader.setUniform('palette', imGraph);
